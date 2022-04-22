@@ -34,37 +34,62 @@ library(tidymodels)
 
 
 ```{r}
-temperature <- read.csv("~/Dropbox/Mi Mac (Rebeca’s MacBook Air)/Documents/ITAM.20/DecimoSemestre/Estadistica-Aplicada-I/Proyecto_Final/Data/Bias_correction_ucl.csv")
+temperature <- read.csv("/Users/rebecaangulorojas/Dropbox/Mi Mac (Rebeca’s MacBook Air)/Documents/ITAM.20/DecimoSemestre/Estadistica-Aplicada-I/Proyecto_Final/Temperature-prediction-MultipleRegression/Data/Bias_correction_ucl.csv")
 
-temperature
-```
+columnas = names(temperature)
+# falta documentar esto
+# nos quedamos con variable no nulas
+columnas
+````
+
+
 ```{r}
 temperature=temperature[complete.cases(temperature),]
-```
-```{r}
-temperature
-```
-#c r e a t e dummy v a r i a b l e s f o r days and month
-```{r}
-library('recipes')
 
-# Making dummy variables
-dummies <- forestfires %>% recipe(area ~ .) %>%
-  step_dummy(month,day,
-             one_hot = TRUE)  %>% 
-  prep() %>% 
-  bake(forestfires)
+
 ```
 
 ```{r}
-pairs(temperature[,c(12,13,14,24)])
+columnas
+```
 
+
+```{r}
+temperature <- temperature[,-c(1,2)]
+#
+```
+
+
+```{r}
+library(ggplot2)
+```
+
+
+# scatter plot
+```{r}
+ggplot(temperature, aes(x=Present_Tmax, y=Next_Tmax)) +
+  geom_point(size=2, shape=23, fill = "#ff6781", colour ="#ff1f46" )
+```
+
+```{r}
+# Basic scatter plot
+ggplot(temperature, aes(x=Present_Tmin, y=Next_Tmax)) +
+  geom_point(size=2, shape=23, fill = "#ff6781")
 ```
 ```{r}
-library(ISLR)
-data("Portafolio")
-summary(Portfolio)
-attach(Portfolio)
-plot(X,Y)
+ggplot(temperature, aes(x=LDAPS_RHmin, y=Next_Tmax)) +
+  geom_point(size=2, shape=23, fill = "#ff6781")
 ```
+```{r}
+ggplot(temperature, aes(x=LDAPS_RHmin, y=Next_Tmax)) +
+  geom_point(size=2, shape=23, fill = "#ff6781")
+```
+
+
+
+
+
+
+
+
 
