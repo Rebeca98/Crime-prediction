@@ -46,7 +46,6 @@ columnas
 ```{r}
 temperature=temperature[complete.cases(temperature),]
 
-
 ```
 
 ```{r}
@@ -64,11 +63,33 @@ temperature <- temperature[,-c(1,2)]
 library(ggplot2)
 ```
 
+```{r}
+n<-7752
+year<- as.Date("2013-07-01")
+temperatureFilter<- c()
+for(i in 1:n){
+  row<-as.Date(temperature[[i,2]],origin="1900-01-01")
+  if (row<=year){
+    temperatureFilter<- rbind(temperatureFilter,temperature[i,])
+  }
+}
+```
+```{r}
+temperatureFilter
+```
+
+
 
 # scatter plot
 ```{r}
-ggplot(temperature, aes(x=Present_Tmax, y=Next_Tmax)) +
-  geom_point(size=2, shape=23, fill = "#ff6781", colour ="#ff1f46" )
+p <- ggplot(temperature, aes(x=Present_Tmax, y=Next_Tmax)) + geom_point(size=2, shape=23, fill = "#f08080", colour ="#ca2441" ) 
+p
+
+
+#+ ggtitle("Maximum air temperature \n vs \n next-day maximum air temperature")
+
+#p  
+#p + theme(plot.title = element_text(family="Arial", color="black", size=12,hjust=0.5))
 ```
 
 ```{r}
