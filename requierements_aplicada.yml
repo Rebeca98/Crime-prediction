@@ -151,7 +151,10 @@ dependencies:
   - pip:
     - appnope==0.1.2
     - ipython==8.2.0
+    - joblib==1.1.0
     - jupyter-client==7.2.2
     - matplotlib-inline==0.1.2
     - prompt-toolkit==3.0.20
+    - scikit-learn==1.1.1
+    - threadpoolctl==3.1.0
 prefix: /Users/rebecaangulorojas/opt/miniconda3/envs/proyecto_aplicada
