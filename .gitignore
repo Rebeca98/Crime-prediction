@@ -42,3 +42,5 @@ vignettes/*.pdf
 /Data
 
 .DS_Store
+
+/figs
